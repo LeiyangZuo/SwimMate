@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="structs.action.extension" value="," />
+
+	<package name="helloworld" namespace="/BeachManagement"
+		extends="struts-defaul,json-default">
+
+		<action name="index" class="action.HomePageAction" method="execute">
+			<result>/BeachManagement/index.jsp</result>
+		</action>
+
+		<action name="login">
+			<result>/BeachManagement/Login.jsp</result>
+		</action>
+
+		<action name="report" class="action.FileUploadAction" method="jumpToReportPage">
+			<result>/BeachManagement/Report.jsp</result>
+		</action>
+
+		<action name="validation" class="action.LoginAction" method="execute">
+			<result name="success">/BeachManagement/index.jsp</result>
+			<result name="error">/BeachManagement/Login.jsp</result>
+			<result name="input">/BeachManagement/Login.jsp</result>
+		</action>
+
+		<action name="uploadphoto" class="action.UploadPhotoAction"
+			method="execute">
+			<result>/BeachManagement/index.jsp</result>
+		</action>
+
+		<action name="fileUploadAction" class="action.FileUploadAction"
+			method="display">
+			<result name="none">/BeachManagement/fileupload.jsp</result>
+		</action>
+
+		<action name="resultAction" class="action.FileUploadAction"
+			method="execute">
+			<result name="success" type="chain">showAllReport</result>
+		</action>
+
+		<action name="showAllReport" class="action.FileUploadAction"
+			method="showAllReport">
+			<result name="showAllReport">/BeachManagement/ReportResult.jsp</result>
+		</action>
+
+		<action name="getReportByBeach" class="action.FileUploadAction"
+			method="getReportByBeach">
+			<result name="getReportByBeach">/BeachManagement/ReportResult.jsp</result>
+		</action>
+
+		<action name="Training" class="action.TrainingAction" method="execute">
+			<result>/BeachManagement/FindTraining.jsp</result>
+		</action>
+
+		<action name="SharkAlarm" class="action.SharkAlarmAction"
+			method="execute">
+			<result>/BeachManagement/SharkAlarm.jsp</result>
+		</action>
+
+		<action name="getTrainingByState" class="action.TrainingAction"
+			method="getTrainingByState">
+			<result>/BeachManagement/FindTraining.jsp</result>
+		</action>
+
+		<action name="getTrainingByPostcode" class="action.TrainingAction"
+			method="getTrainingByPostcode">
+			<result>/BeachManagement/FindTraining.jsp</result>
+		</action>
+
+		<action name="findBeachByFacility" class="action.FacilityAction"
+			method="findBeachByFacility">
+			<result>/BeachManagement/FindFacility.jsp</result>
+		</action>
+
+		<action name="getFacility" class="action.FacilityAction"
+			method="getFacility">
+			<result>/BeachManagement/FindFacility.jsp</result>
+		</action>
+
+		<action name="Patrol">
+			<result>/BeachManagement/Patrol.jsp</result>
+		</action>
+
+		<action name="beach" class="action.BeachAction" method="execute">
+			<result name="success">/BeachManagement/FindBeach.jsp</result>
+		</action>
+
+		<action name="beachInfo" class="action.BeachInfoAction" method="execute">
+			<result name="success">/BeachManagement/BeachInfo.jsp</result>
+		</action>
+
+		<action name="getBeachByState" class="action.BeachAction"
+			method="getBeachByState">
+			<result name="success">/BeachManagement/FindBeach.jsp</result>
+		</action>
+
+		<action name="getBeachByName" class="action.BeachAction"
+			method="getBeachByName">
+			<result name="success">/BeachManagement/FindBeach.jsp</result>
+		</action>
+
+		<action name="jumpToLoginPage">
+			<result>/BeachManagement/UserLogin.jsp</result>
+		</action>
+
+
+		<action name="tips" class="action.TipAction" method="execute">
+			<result>/BeachManagement/Tips.jsp</result>
+		</action>
+
+		<action name="userSignup" class="action.UserAction" method="signup">
+			<result name="success">/BeachManagement/UserLogin.jsp</result>
+			<result name="error">/BeachManagement/UserLogin.jsp
+			</result>
+		</action>
+
+		<action name="userLogin" class="action.UserAction" method="login">
+			<result name="success">/BeachManagement/index.jsp
+			</result>
+			<result name="error">/BeachManagement/UserLogin.jsp
+			</result>
+		</action>
+
+		<action name="user" class="action.UserAction" method="execute">
+			<result name="success">/BeachManagement/Users.jsp</result>
+		</action>
+
+		<action name="rating" class="action.RatingAction" method="addRating">
+			<result type="stream">
+				<param name="contentType">text/plain</param>
+			</result>
+		</action>
+
+		<action name="modifyProfile" class="action.UserAction" method="modifyProfile">
+			<result name="success">/BeachManagement/Profile.jsp</result>
+			<result name="error">/BeachManagement/Profile.jsp
+			</result>
+		</action>
+
+		<action name="jumpToProfilePage" class="action.UserAction"
+			method="jumpToProfilePage">
+			<result name="success">/BeachManagement/Profile.jsp</result>
+		</action>
+
+		<action name="changePasswd" class="action.UserAction" method="changePasswd">
+			<result name="success">/BeachManagement/UserLogin.jsp
+			</result>
+			<result name="error">/BeachManagement/Profile.jsp
+			</result>
+		</action>
+
+		<action name="reminder" class="action.ReminderAction" method="execute">
+			<result name="success">/BeachManagement/Reminders.jsp
+			</result>
+			<result name="error">/BeachManagement/Reminders.jsp
+			</result>
+		</action>
+
+		<action name="submitState" class="action.ReminderAction"
+			method="submitState">
+			<result name="success">/BeachManagement/EditReminder.jsp
+			</result>
+			<result name="error">/BeachManagement/EditReminder.jsp
+			</result>
+			<result name="input">/BeachManagement/EditReminder.jsp</result>
+		</action>
+
+		<action name="submitReminder" class="action.ReminderAction"
+			method="submitReminder">
+			<result name="success">/BeachManagement/Reminders.jsp
+			</result>
+			<result name="error">/BeachManagement/Reminders.jsp
+			</result>
+		</action>
+
+		<action name="deleteReminder" class="action.ReminderAction"
+			method="deleteReminder">
+			<result name="success">/BeachManagement/Reminders.jsp
+			</result>
+			<result name="error">/BeachManagement/Reminders.jsp
+			</result>
+		</action>
+
+
+		<action name="jumpToModifyReminder" class="action.ReminderAction"
+			method="jumpToModifyReminder">
+			<result name="success">/BeachManagement/EditReminder.jsp
+			</result>
+			<result name="error">/BeachManagement/EditReminder.jsp
+			</result>
+		</action>
+		
+		<action name="reminderDescription" class="action.ReminderAction"
+			method="reminderDescription">
+			<result name="success">/BeachManagement/PlanYourJourneyDescription.jsp
+			</result>
+			<result name="error">/BeachManagement/PlanYourJourneyDescription.jsp
+			</result>
+		</action>
+		
+		<action name="reportDescription" class="action.FileUploadAction"
+			method="reportDescription">
+			<result name="success">/BeachManagement/reportDescription.jsp
+			</result>
+			<result name="error">/BeachManagement/reportDescription.jsp
+			</result>
+		</action>
+		
+		
+	</package>
+
+</struts>    
